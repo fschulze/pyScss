@@ -1220,6 +1220,29 @@ TESTS FOR REPORTED ISSUES
     }
 
 
+### Test @media queries shouldn't be split up
+
+    >>> print css.compile('''
+    ... @option compress:no, short_colors: no;
+    ... @media (max-width:1024px) {
+    ...   body {
+    ...     background: red;
+    ...   }
+    ...   div {
+    ...     background: blue;
+    ...   }
+    ... }
+    ... ''') #doctest: +NORMALIZE_WHITESPACE
+    @media (max-width:1024px) {
+      body {
+        background: #ff0000;
+      }
+      div {
+        background: #0000ff;
+      }
+    }
+
+
 UNSUPPORTED
 -----------
 
